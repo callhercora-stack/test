@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kosar Rashidiani | Visual Artist & Animator</title>
+    <meta name="description" content="Portfolio of Kosar Rashidiani - 2D Designer, Animator, and Illustrator.">
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cinzel for fantasy headers, Lato for readable text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'header': ['Cinzel', 'serif'],
+                        'body': ['Lato', 'sans-serif'],
+                    },
+                    colors: {
+                        'void': '#050505',
+                        'charcoal': '#121212',
+                        'witch-gold': '#d4af37',
+                        'mist': '#a8a8a8'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37; 
+        }
+
+        /* Spotlight Effect Layer */
+        #spotlight {
+            background: radial-gradient(600px circle at var(--x) var(--y), rgba(212, 175, 55, 0.06), transparent 40%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+        
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-void text-mist font-body overflow-x-hidden selection:bg-witch-gold selection:text-void">
+
+    <!-- Spotlight Effect Background -->
+    <div id="spotlight"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 bg-void/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-header text-xl tracking-widest text-white hover:text-witch-gold transition-colors">K. Rashidiani</a>
+            <div class="hidden md:flex space-x-8 text-sm tracking-wider">
+                <a href="#work" class="hover:text-witch-gold transition-colors">WORK</a>
+                <a href="#about" class="hover:text-witch-gold transition-colors">ABOUT</a>
+                <a href="#contact" class="hover:text-witch-gold transition-colors">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background elements -->
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <p class="text-witch-gold tracking-[0.3em] text-sm mb-4 animate-fade-in" style="animation-delay: 0.2s;">VISUAL ARTIST & ANIMATOR</p>
+            <h1 class="font-header text-5xl md:text-7xl lg:text-8xl text-white mb-6 animate-fade-in" style="animation-delay: 0.4s;">
+                Kosar Rashidiani
+            </h1>
+            <p class="text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.6s;">
+                Crafting atmospheric narratives and expressive characters. <br>
+                From Amsterdam to the weird corners of imagination.
+            </p>
+            <div class="mt-12 animate-fade-in" style="animation-delay: 0.8s;">
+                <a href="#work" class="group relative inline-flex items-center px-8 py-3 overflow-hidden text-white border border-witch-gold/50 rounded-full hover:bg-witch-gold/10 transition-all duration-300">
+                    <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-witch-gold rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+                    <span class="relative tracking-widest text-sm">VIEW GALLERY</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section id="work" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-end justify-between mb-16 border-b border-white/10 pb-4">
+                <h2 class="font-header text-4xl text-white">Selected Works</h2>
+                <span class="hidden md:block text-xs tracking-widest opacity-50">SCROLL TO EXPLORE</span>
+            </div>
+
+            <!-- Masonry-style Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1: Ancient Witch -->
+                <div class="group gallery-item relative aspect-[4/3] md:aspect-[3/4] overflow-hidden rounded-sm cursor-pointer lg:col-span-2" onclick="openModal('ancient-witch')">
+                    <img src="./ancient witch copy2.jpg" alt="Ancient Witch Ritual" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0 grayscale-[20%]">
+                    <div class="overlay absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <h3 class="font-header text-2xl text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">The Ritual</h3>
+                        <p class="text-sm font-light text-witch-gold translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Atmospheric Environment Design</p>
+                    </div>
+                </div>
+
+                <!-- Project 2: Badass Duffy -->
+                <div class="group gallery-item relative aspect-square overflow-hidden rounded-sm cursor-pointer" onclick="openModal('duffy')">
+                    <img src="./badassduffy copy.jpg" alt="Character Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0 grayscale-[20%]">
+                    <div class="overlay absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <h3 class="font-header text-2xl text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Duffy</h3>
+                        <p class="text-sm font-light text-witch-gold translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Stylized Character Portrait</p>
+                    </div>
+                </div>
+
+                <!-- Project 3: Elder One -->
+                <div class="group gallery-item relative aspect-[3/4] overflow-hidden rounded-sm cursor-pointer" onclick="openModal('elder')">
+                    <img src="./elder one.jpg" alt="The Elder One" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0 grayscale-[20%]">
+                    <div class="overlay absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <h3 class="font-header text-2xl text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">The Elder</h3>
+                        <p class="text-sm font-light text-witch-gold translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Dark Fantasy Concept</p>
+                    </div>
+                </div>
+
+                <!-- Text Block Filler to balance grid -->
+                <div class="relative bg-charcoal p-8 flex flex-col justify-center items-start lg:col-span-2 border border-white/5">
+                    <i data-lucide="pen-tool" class="w-8 h-8 text-witch-gold mb-4"></i>
+                    <h3 class="font-header text-2xl text-white mb-4">Design Philosophy</h3>
+                    <p class="leading-relaxed text-sm md:text-base">
+                        "I translate creative ideas into clear, engaging visuals. Whether it's the subtle lighting in a gloomy ruin or the sharp gaze of a character, I focus on the emotional tone of every frame."
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience / About Section -->
+    <section id="about" class="py-24 bg-charcoal relative overflow-hidden">
+        <!-- Decorative subtle line -->
+        <div class="absolute left-10 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-witch-gold/20 to-transparent hidden md:block"></div>
+
+        <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+            
+            <!-- Bio -->
+            <div class="md:col-span-1">
+                <h2 class="font-header text-3xl text-white mb-6">Artist Profile</h2>
+                <p class="text-sm leading-7 mb-6">
+                    Creative and adaptable with a background in visual arts and animation. Based in <span class="text-white border-b border-witch-gold">Amsterdam</span>.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="layers" class="w-5 h-5 text-witch-gold"></i>
+                        <span class="text-sm">Adobe Suite & Figma</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="video" class="w-5 h-5 text-witch-gold"></i>
+                        <span class="text-sm">Toon Boom & TvPaint</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="languages" class="w-5 h-5 text-witch-gold"></i>
+                        <span class="text-sm">English, Persian, Dutch</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resume / Timeline -->
+            <div class="md:col-span-2 space-y-12">
+                <h2 class="font-header text-3xl text-white mb-6 border-b border-white/10 pb-4">Experience</h2>
+                
+                <div class="group relative pl-8 border-l border-white/10 hover:border-witch-gold transition-colors">
+                    <span class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-charcoal border border-witch-gold"></span>
+                    <span class="text-xs tracking-widest text-witch-gold mb-1 block">02/2023 - 12/2023</span>
+                    <h3 class="text-xl text-white font-bold">2D Designer</h3>
+                    <p class="text-sm text-gray-400 mb-2">Bimarz Studio, Dubai</p>
+                    <p class="text-sm leading-relaxed">Developing illustrations and design assets for digital content and motion graphics across platforms. Translating creative ideas into engaging visuals.</p>
+                </div>
+
+                <div class="group relative pl-8 border-l border-white/10 hover:border-witch-gold transition-colors">
+                    <span class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-charcoal border border-white/30 group-hover:border-witch-gold"></span>
+                    <span class="text-xs tracking-widest text-witch-gold mb-1 block">03/2022 - 12/2022</span>
+                    <h3 class="text-xl text-white font-bold">2D Animator</h3>
+                    <p class="text-sm text-gray-400 mb-2">Double Dot Studio, Tehran</p>
+                    <p class="text-sm leading-relaxed">Character animation and storytelling for short films. Used frame-by-frame techniques to ensure fluid, emotive movement.</p>
+                </div>
+
+                <div class="group relative pl-8 border-l border-white/10 hover:border-witch-gold transition-colors">
+                    <span class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-charcoal border border-white/30 group-hover:border-witch-gold"></span>
+                    <span class="text-xs tracking-widest text-witch-gold mb-1 block">02/2016 - Present</span>
+                    <h3 class="text-xl text-white font-bold">Freelance Designer & Illustrator</h3>
+                    <p class="text-sm text-gray-400 mb-2">Remote</p>
+                    <p class="text-sm leading-relaxed">Branding, illustrations, and creative content for clients worldwide.</p>
+                </div>
+
+                <!-- Education Mini Section -->
+                <div class="pt-8">
+                    <h4 class="font-header text-lg text-white mb-4">Education</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-void p-4 border border-white/5 rounded">
+                            <p class="text-white font-bold">Master of Animation</p>
+                            <p class="text-xs text-gray-400">Tarbiat Modares University (2020-2023)</p>
+                        </div>
+                        <div class="bg-void p-4 border border-white/5 rounded">
+                            <p class="text-white font-bold">Bachelor of Painting</p>
+                            <p class="text-xs text-gray-400">Tehran University of Arts (2013-2016)</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 flex items-center justify-center text-center">
+        <div class="max-w-2xl px-6">
+            <h2 class="font-header text-4xl md:text-5xl text-white mb-6">Let's Create Together</h2>
+            <p class="mb-10 text-lg font-light">
+                I'm currently available for full-time roles and freelance commissions.
+            </p>
+            <a href="mailto:kosarrashidiani@gmail.com" class="inline-block bg-witch-gold text-void font-bold tracking-widest py-4 px-10 hover:bg-white transition-colors duration-300">
+                KOSARRASHIDIANI@GMAIL.COM
+            </a>
+            <div class="mt-12 flex justify-center gap-8 opacity-60">
+                <a href="#" class="hover:text-white hover:scale-110 transition-all"><i data-lucide="linkedin"></i></a>
+                <a href="#" class="hover:text-white hover:scale-110 transition-all"><i data-lucide="instagram"></i></a>
+                <a href="#" class="hover:text-white hover:scale-110 transition-all"><i data-lucide="mail"></i></a>
+            </div>
+            <p class="mt-12 text-xs opacity-30">© 2025 Kosar Rashidiani. All rights reserved.</p>
+        </div>
+    </section>
+
+    <!-- Image Modal (Lightbox) -->
+    <div id="modal" class="fixed inset-0 z-[60] bg-black/95 hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white hover:text-witch-gold">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <img id="modal-img" src="" alt="Full size" class="max-h-[90vh] max-w-[90vw] object-contain shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <div class="absolute bottom-6 left-0 w-full text-center">
+            <h3 id="modal-title" class="font-header text-xl text-white tracking-widest"></h3>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Spotlight Effect Logic
+        const spotlight = document.getElementById('spotlight');
+        document.addEventListener('mousemove', (e) => {
+            spotlight.style.setProperty('--x', `${e.clientX}px`);
+            spotlight.style.setProperty('--y', `${e.clientY}px`);
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+
+        const images = {
+            'ancient-witch': { src: './ancient witch copy2.jpg', title: 'The Ritual' },
+            'duffy': { src: './badassduffy copy.jpg', title: 'Duffy - Character Study' },
+            'elder': { src: './elder one.jpg', title: 'The Elder One' }
+        };
+
+        function openModal(id) {
+            const data = images[id];
+            if(data) {
+                modalImg.src = data.src;
+                modalTitle.innerText = data.title;
+                modal.classList.remove('hidden');
+                // Small delay to allow display:block to apply before opacity transition
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                }, 10);
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }, 300);
+        }
+
+        // Close modal on clicking outside image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
